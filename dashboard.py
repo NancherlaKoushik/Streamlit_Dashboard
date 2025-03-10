@@ -114,6 +114,7 @@ fig3 = px.treemap(filtered_df, path = ["Region","Category","Sub-Category"], valu
 fig3.update_layout(width = 800, height = 650)
 st.plotly_chart(fig3, use_container_width=True)
 
+# Segment wise sales
 chart1,chart2 = st.columns((2))
 with chart1 :
     st.subheader("Segment wise sales")
@@ -127,6 +128,7 @@ with chart2:
     fig.update_traces(text = filtered_df["Category"], textposition = "inside")
     st.plotly_chart(fig, use_container_width=True)
 
+# Month wise Sub-Category Sales Summary
 import plotly.figure_factory as ff
 st.subheader(":point_right: Month wise Sub-Category Sales Summary")
 with st.expander("Summary Table"):
