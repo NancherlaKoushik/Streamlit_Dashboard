@@ -17,8 +17,13 @@ if fl is not None:
     st.write(filename)
     df = pd.read_csv(filename, encoding = "ISO-8859-1")
 else:
-    os.chdir(r"C:\Users\keerthi\Desktop\Streamlit")
-    df = pd.read_csv("sample.csv", encoding = "ISO-8859-1")
+    # Use a relative path or a path that exists in your environment
+    # Option 1: Use a sample file in the current directory
+    try:
+        df = pd.read_csv("sample.csv", encoding = "ISO-8859-1")
+    except FileNotFoundError:
+        st.error("Default sample file not found. Please upload a file.")
+        st.stop()
 
 col1, col2 = st.columns((2))
 df["Order Date"] = pd.to_datetime(df["Order Date"])
